@@ -15,17 +15,28 @@
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": ["ms-vscode.mono-debug@0.15.8","ms-dotnettools.csharp","ms-python.python", "ms-python.vscode-pylance", "eamodio.gitlens", "yzhang.markdown-all-in-one"],
+	"extensions": [
+		"ms-vscode.mono-debug@0.15.8",
+		"ms-dotnettools.csharp",
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"eamodio.gitlens",
+		"yzhang.markdown-all-in-one"
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "dotnet nuget add source /Workspaces/Lean/LocalPackages && cp /Workspaces/Local/.vscode /Workspaces/Lean/ -r -f",
+	// Post create commands; only runs on initial creation of container
+	"postCreateCommand": "dotnet nuget add source /Workspaces/Lean/LocalPackages",
+
+	// Post start commands; runs each time the container is started
+	"postStartCommand": "cp /Workspaces/Local/overrides/.vscode/ /Workspaces/Lean/ -r -f", // Override Lean .vscode files
 
 	// Add mounts to docker container
 	"mounts": [ 
-		// Example data mount from local machine, must use target directory in Config.json **Not required, can always use repo data
-		"source=C:/Users/Colton/Desktop/Working/QuantConnect/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
+		/* Example data mount from local machine, must set "data-folder" in Lean/Launcher/Config.json 
+		 to target directory. Not required, but maintains data locally, good for downloading. */
+		//"source=C:/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
 	],
 }
