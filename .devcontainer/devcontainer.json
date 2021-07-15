@@ -16,8 +16,8 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"ms-vscode.mono-debug@0.15.8",
 		"ms-dotnettools.csharp",
+		"formulahendry.dotnet-test-explorer",
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"eamodio.gitlens",
