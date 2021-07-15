@@ -1,12 +1,13 @@
 
 # Lean Development Container
 
-This repo aims to simplify local development of Lean by introducing a docker container development environmnent for VS Code. By building on top of the Lean Foundation image we are able to quickly setup an environment with all necessary dependencies installed already. Then with the custom dockerfile and devcontainer settings in this repo we are able to add addition useful tools for development such as:
+This repo aims to simplify local development of Lean by introducing a docker container development environment for VS Code. By building on top of the Lean Foundation image we are able to quickly setup an environment with all necessary dependencies installed already. Then with the customization settings in this repo we are able to add addition useful tools for development such as:
 
 - Latest Git
+- Pre-Installed VSCode Extensions
 - Python Stubs for AutoComplete
-- Research Support
-- Recommended VS Code Extensions
+- Research Support Py & C#
+- Autobuilder task
 
 # Setup
 
@@ -28,11 +29,11 @@ This repo aims to simplify local development of Lean by introducing a docker con
 
 From here the container should be initializing, this may take awhile as it acquires a copy of the latest Lean repo.
 
-Once complete your environment is ready to go, a pop up should appear asking for you to open the workspace "lean.code-workspace". If it doesn't go to File > Open Workspace > "lean.code-workspace". Now you should Lean, Local, and Data** directories in the workspace.
+Once complete your environment is ready to go, a pop up should appear asking for you to open the workspace `lean.code-workspace`. If it doesn't go to File > Open Workspace > `lean.code-workspace`. Now you should Lean, Local, and Data** directories in the workspace.
 
 If you would like to mount any additional local files to your container, checkout `devcontainer.json` "mounts" section for an example! Upon any mount changes you must rebuild the container using Command Palette as in step 4.
 
-** Data folder will only contain data that was mounted to it. Reference `devcontainer.json` for an example to mount there.
+** Data folder will only contain data that was mounted to it. Reference `devcontainer.json` for an example on how to mount there.
 
 # Running Lean
 
