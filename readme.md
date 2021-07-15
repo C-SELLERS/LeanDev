@@ -14,7 +14,7 @@ The eventual plan for this repo will be to merge directly into Lean to allow cus
 
 Before going any further please [install docker](https://docs.docker.com/get-docker/) on your machine and ensure it is currently running.
 
-From VSCode we can launch the development environment by using the "Remote-Containers" extension. It is likely you will be asked to install it upon opening the repo, but if not please install this extension from the marketplace. 
+From VSCode we can launch the development environment by using the "Remote-Containers" extension. It is likely you will be asked to install it upon opening the repo, but if not please install this extension from the marketplace. Get [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Extension here.
 
 Once installed do the follow:
 - Ctrl + Shift + P to bring up VS Code command palette
@@ -23,7 +23,4 @@ Once installed do the follow:
 
 From here the container should be initializing, this may take awhile as it will download the Lean Foundation image as well as a copy of the latest repo.
 
-Once complete your environment is ready to go, for now you will have to do most of the work from the command line until we overwrite the VS Code launch options.
-
-# Commands
-- `dotnet build`
+Once complete your environment is ready to go, a pop up should appear asking for you to open the workspace "lean.code-workspace". If it doesn't go to File > Open Workspace > "lean.code-workspace".

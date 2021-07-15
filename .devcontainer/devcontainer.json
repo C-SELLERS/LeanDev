@@ -1,8 +1,8 @@
 {
 	"name": "Lean Dev",
 
-	"workspaceMount": "source=${localWorkspaceFolder},target=/Lean/LocalWorkspace,type=bind",
-	"workspaceFolder": "/Lean",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/Workspaces/Local,type=bind",
+	"workspaceFolder": "/Workspaces/Local",
 
 	// Use devcontainer Dockerfile that is based on Lean foundation image
 	"build": {
@@ -21,9 +21,11 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "dotnet nuget add source /Lean/LocalPackages",
+	"postCreateCommand": "dotnet nuget add source /Workspaces/Lean/LocalPackages && cp /Workspaces/Local/.vscode /Workspaces/Lean/ -r -f",
 
 	// Add mounts to docker container
 	"mounts": [ 
+		// Example data mount from local machine, must use target directory in Config.json **Not required, can always use repo data
+		"source=C:/Users/Colton/Desktop/Working/QuantConnect/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
 	],
 }

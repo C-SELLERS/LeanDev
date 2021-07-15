@@ -1,0 +1,26 @@
+/*
+ Define workspace for this dev container as well as other important workspace settings
+*/
+
+{
+  "folders": [
+    {
+      // Our Lean repo
+      "path": "../Lean",
+      "name": "Lean"
+    },
+    {
+      // Our local workspace
+      "path": ".",
+      "name": "Local"
+    },
+    {
+      // Only applicable if data was mounted to that location
+      "path": "../Data",
+      "name": "Data"
+    }
+  ],
+  "settings": {
+    "python.pythonPath": "/opt/miniconda3/bin/python"
+  }
+}
