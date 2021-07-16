@@ -1,18 +1,8 @@
 {
 	"name": "Lean Dev",
-
-	"workspaceMount": "source=${localWorkspaceFolder},target=/Workspaces/Local,type=bind",
+	"dockerComposeFile": "docker-compose.yml",
 	"workspaceFolder": "/Workspaces/Local",
-
-	// Use devcontainer Dockerfile that is based on Lean foundation image
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-
-	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+	"service": "leandev",
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
@@ -21,22 +11,16 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"eamodio.gitlens",
-		"yzhang.markdown-all-in-one"
+		"yzhang.markdown-all-in-one",
+		"ms-azuretools.vscode-docker"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Post create commands; only runs on initial creation of container
-	"postCreateCommand": "dotnet nuget add source /Workspaces/Lean/LocalPackages",
+	//"postCreateCommand": "",
 
 	// Post start commands; runs each time the container is started
 	"postStartCommand": "cp /Workspaces/Local/overrides/.vscode/ /Workspaces/Lean/ -r -f", // Override Lean .vscode files
-
-	// Add mounts to docker container
-	"mounts": [ 
-		/* Example data mount from local machine, must set "data-folder" in Lean/Launcher/Config.json 
-		 to target directory. Not required, but maintains data locally, good for downloading. */
-		//"source=C:/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
-	],
 }

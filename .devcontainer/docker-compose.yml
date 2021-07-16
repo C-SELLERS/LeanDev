@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  leandev:
+    container_name: leandev
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+      #args: 
+    volumes:
+      # Mount our workspace folders
+      - ..:/Workspaces/Local:cached
+
+      # Docker in Docker support; mount docker socket to container
+      - /var/run/docker.sock:/var/run/docker.sock 
+
+      # Example data mount from local machine, must set "data-folder" in Lean/Launcher/Config.json 
+      # to target directory. Not required, but maintains data locally, good for downloading.
+      - C:/Users/Colton/Desktop/Working/QuantConnect/Data:/Workspaces/Data:cached
