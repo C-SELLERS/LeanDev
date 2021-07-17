@@ -1,6 +1,7 @@
 {
 	"name": "Lean Dev",
 	"dockerComposeFile": "docker-compose.yml",
+	"shutdownAction": "stopCompose",
 	"workspaceFolder": "/Workspaces/Local",
 	"service": "leandev",
 
