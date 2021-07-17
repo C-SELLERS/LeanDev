@@ -21,14 +21,15 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"eamodio.gitlens",
-		"yzhang.markdown-all-in-one"
+		"yzhang.markdown-all-in-one",
+		"ms-azuretools.vscode-docker"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Post create commands; only runs on initial creation of container
-	"postCreateCommand": "dotnet nuget add source /Workspaces/Lean/LocalPackages",
+	"postCreateCommand": "",
 
 	// Post start commands; runs each time the container is started
 	"postStartCommand": "cp /Workspaces/Local/overrides/.vscode/ /Workspaces/Lean/ -r -f", // Override Lean .vscode files
@@ -38,5 +39,8 @@
 		/* Example data mount from local machine, must set "data-folder" in Lean/Launcher/Config.json 
 		 to target directory. Not required, but maintains data locally, good for downloading. */
 		//"source=C:/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
+
+		// Docker in Docker Mount; allows docker commands to be executed through host machine
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
 	],
 }
