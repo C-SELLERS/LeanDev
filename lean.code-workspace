@@ -5,19 +5,20 @@
 {
   "folders": [
     {
-      // Our Lean repo
+      //Lean repo
       "path": "../Lean",
       "name": "Lean"
     },
     {
-      // Our local workspace
+      // Local workspace
       "path": ".",
       "name": "Local"
     },
     {
-      // Only applicable if data was mounted to that location
-      "path": "../Data",
-      "name": "Data"
+      // Default Data mount location; needs data mounted in .devcontainer "mounts"
+      // Uncomment the following lines to show the data folder in the workspace
+      //"path": "../Data",
+      //"name": "Data"
     }
   ],
   "settings": {
@@ -27,6 +28,42 @@
     "python.testing.promptToConfigure": false,
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false
+    "python.testing.nosetestsEnabled": false,
+
+    "csharp.unitTestDebuggingOptions": {
+      "justMyCode": false,
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "autobuilder",
+        "group": "build",
+        "type": "shell",
+        "isBackground": true,
+        "linux": {
+            "command": "/Workspaces/Local/scripts/autobuilder.sh"
+        },
+        "osx": {
+            "command": "/Workspaces/Local/scripts/autobuilder.sh"
+        },
+        "args" : [
+            "${workspaceFolder}/Lean/Launcher",
+        ],
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "Lean-Research",
+        "type": "shell",
+        "isBackground": true,
+        "command" : "/Workspaces/Local/scripts/launch_research.sh",
+        "args" : [
+            "/Workspaces/Lean/Launcher/bin/Debug",
+            "/Workspaces/Lean/Data" // Data location; Change if data is mounted
+        ],
+        "problemMatcher": "$msCompile"
+      }
+    ]
   }
 }
