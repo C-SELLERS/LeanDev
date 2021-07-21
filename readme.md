@@ -42,3 +42,10 @@ This works just like running Lean in vscode outside of the container, reference 
 Updates to Lean foundation image may cause incompatibility issues. If you are experiencing problems running Lean be sure to update your foundation image. This can be done locally with the following command:
 `docker pull quantconnect/lean:foundation`
 Then use the "Rebuild and Reopen in Container" if local, or "Rebuild Container" if in dev container option from the command pallete to update to the latest environment. 
+
+# Known issues
+Here I will include any information regarding known bugs and possible work arounds.
+
+VSCode Python Extension:
+- Activating Python Extension continues forever:
+    - Try using the Python Extension on your local machine, meaning enable and let it activate. This solved this problem for me strangely.
