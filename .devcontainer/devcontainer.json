@@ -32,7 +32,9 @@
 	// Add mounts to docker container
 	"mounts": [ 
 		/* Example data mount from local machine, must set "data-folder" in Lean/Launcher/Config.json 
-		 to target directory. Not required, but maintains data locally, good for downloading. */
+		 to target directory for Lean use. Not required, but maintains data locally, good for downloading use case.
+		 Can also add this target location to the workspace file to see data folder in VS Code, reference
+		 lean.code-workspace file included in this repo for an example for this target data location */
 		//"source=C:/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
 
 		// Docker in Docker Mount; allows docker commands to be executed through host machine
