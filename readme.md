@@ -29,9 +29,13 @@ This repo aims to simplify local development of Lean by introducing a docker con
 
 From here the container should be initializing, this may take awhile as it acquires a copy of the latest Lean repo.
 
-Once complete your environment is ready to go, a pop up should appear asking for you to open the workspace `lean.code-workspace`. If it doesn't go to File > Open Workspace > `lean.code-workspace`. Now you should Lean & Local directories in the workspace. You can expand the directories in the workspace by adding additional entries to the `lean.code-workspace` file, or in File > Add Folder to Workspace...
+Once complete your environment is ready to go, a pop up should appear asking for you to open the workspace `lean.code-workspace`. If it doesn't go to File > Open Workspace > `lean.code-workspace`. Now you should Lean & Local directories in the workspace. 
 
-If you would like to mount local files to your container, checkout `devcontainer.json` "mounts" section for an example of a data mount! Upon any mount changes you must "rebuild" the container using Command Palette as in step 4.
+You can expand the directories in the workspace by adding additional entries to the `lean.code-workspace` file, or in File > Add Folder to Workspace...
+
+If you would like to mount local files to your container, checkout `devcontainer.json` "mounts" section for an example of a data mount! Upon any mount changes you must "rebuild" the container using Command Palette as in step 4. 
+
+***Beware "rebuild" will refresh the Lean repo meaning any uncommited changes will be lost!! Be sure to save work either to `Local` directory or commit and push to remote.
 
 # Running Lean
 
