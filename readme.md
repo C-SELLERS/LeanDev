@@ -35,8 +35,6 @@ You can expand the directories in the workspace by adding additional entries to 
 
 If you would like to mount local files to your container, checkout `devcontainer.json` "mounts" section for an example of a data mount! Upon any mount changes you must "rebuild" the container using Command Palette as in step 4. 
 
-***Beware "rebuild" will refresh the Lean repo meaning any uncommited changes will be lost!! Be sure to save work either to `Local` directory or commit and push to remote.
-
 # Running Lean
 
 This works just like running Lean in vscode outside of the container, reference [readme](https://github.com/QuantConnect/Lean/tree/master/.vscode#how-to-use-lean) in Lean repo under .vscode.
