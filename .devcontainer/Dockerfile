@@ -26,12 +26,6 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet tool install -g --add-source "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json" Microsoft.dotnet-interactive && \
     dotnet interactive jupyter install 
 
-# --------- Lean ---------
-# Clone Lean and restore packages
-RUN git clone https://github.com/QuantConnect/Lean /Workspaces/Lean && \
-    dotnet nuget add source /Workspaces/Lean/LocalPackages && \
-    dotnet restore ./Workspaces/Lean/QuantConnect.Lean.sln
-
 # --------- Docker in Docker ---------
 # Install Docker CE CLI
 RUN apt-get update \
