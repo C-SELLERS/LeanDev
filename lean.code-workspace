@@ -12,6 +12,16 @@
       "path": ".",
       "name": "Local"
     },
+    /*
+    {
+      "path": "../../venv/",
+      "name": "venvPython"
+    },
+    {
+      "path": "../../opt/miniconda3/"
+      "name": "basePython
+    }
+    */
   ],
   "settings": {
     "python.defaultInterpreterPath": "/opt/miniconda3/bin/python",
@@ -69,6 +79,34 @@
             "/Workspaces/Lean/Data" // Data location; Change if data is mounted
         ],
         "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "run tests",
+        "group": "test",
+        "type": "shell",
+        "command": "/Workspaces/Local/scripts/run_tests.sh",
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Venv Python",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "python": "/venv/bin/python3",
+        "justMyCode": false
+      },
+      {
+        "name": "Base Python",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "justMyCode": false
       }
     ]
   }
