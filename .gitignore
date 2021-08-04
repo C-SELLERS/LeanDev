@@ -1,0 +1,6 @@
+# Ignore some special folders for test results and work storage
+TestResults/*
+Work/*
+
+# Ignore local data
+Data/*

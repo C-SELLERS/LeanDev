@@ -5,34 +5,50 @@
 {
   "folders": [
     {
-      //Lean repo
       "path": "../Lean",
-      "name": "Lean"
+      "name": "LEAN"
     },
     {
-      // Local workspace
       "path": ".",
       "name": "Local"
     },
+    /*
     {
-      // Default Data mount location; needs data mounted in .devcontainer "mounts"
-      // Uncomment the following lines to show the data folder in the workspace
-      //"path": "../Data",
-      //"name": "Data"
+      "path": "../../venv/",
+      "name": "venvPython"
+    },
+    {
+      "path": "../../opt/miniconda3/"
+      "name": "basePython
     }
+    */
   ],
   "settings": {
-    "python.pythonPath": "/opt/miniconda3/bin/python",
+    "python.defaultInterpreterPath": "/opt/miniconda3/bin/python",
 
-    // Not applicable to Lean, but if add PythonNet to this container could be useful
+    // Not applicable to Lean, but if add PythonNet to this container could be useful to enable
     "python.testing.promptToConfigure": false,
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
 
+    // Allow code external to Lean to be debugged
     "csharp.unitTestDebuggingOptions": {
       "justMyCode": false,
-    }
+    },
+
+    // Hide lean from our local folder, keeps workspace clean
+    "files.exclude": {
+      "**/Lean": true,
+    },
+
+    // Allow comments in JSON files
+    "files.associations": {
+      "*.json": "jsonc"
+    },
+
+    // Some workbench settings just to make development easier
+    "workbench.editor.wrapTabs": true,
   },
   "tasks": {
     "version": "2.0.0",
@@ -63,6 +79,34 @@
             "/Workspaces/Lean/Data" // Data location; Change if data is mounted
         ],
         "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "run tests",
+        "group": "test",
+        "type": "shell",
+        "command": "/Workspaces/Local/scripts/run_tests.sh",
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Venv Python",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "python": "/venv/bin/python3",
+        "justMyCode": false
+      },
+      {
+        "name": "Base Python",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "justMyCode": false
       }
     ]
   }
