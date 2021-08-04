@@ -26,7 +26,7 @@
 	// "forwardPorts": [],
 
 	// Post create commands; only runs on initial creation of container
-	"postCreateCommand": "chmod -R +x /Workspaces/Local/scripts/ && /Workspaces/Local/scripts/lean_setup.sh",
+	"postCreateCommand": "chmod -R +x /Workspaces/Local/scripts/* && /Workspaces/Local/scripts/lean_setup.sh",
 
 	// Post start commands; runs each time the container is started
 	"postStartCommand": "",
@@ -40,9 +40,6 @@
 		//"source=C:/Data,target=/Workspaces/Data,type=bind,consistency=cached", 
 
 		// Docker in Docker Mount; allows docker commands to be executed through host machine
-		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-
-		// Mount a directory to store Lean in, so we can keep the repo between builds
-		"source=${localWorkspaceFolder}/Lean,target=/Workspaces/Lean,type=bind",
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
 	],
 }

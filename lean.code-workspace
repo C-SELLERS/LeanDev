@@ -5,7 +5,7 @@
 {
   "folders": [
     {
-      "path": "../Lean",
+      "path": "./Lean",
       "name": "LEAN"
     },
     {
@@ -25,6 +25,7 @@
   ],
   "settings": {
     "python.defaultInterpreterPath": "/opt/miniconda3/bin/python",
+    "omnisharp.defaultLaunchSolution": "/Workspaces/Local/Lean/QuantConnect.Lean.sln",
 
     // Not applicable to Lean, but if add PythonNet to this container could be useful to enable
     "python.testing.promptToConfigure": false,
@@ -70,13 +71,13 @@
         "problemMatcher": "$msCompile"
       },
       {
-        "label": "Lean-Research",
+        "label": "start Lean research",
         "type": "shell",
         "isBackground": true,
         "command" : "/Workspaces/Local/scripts/launch_research.sh",
         "args" : [
-            "/Workspaces/Lean/Launcher/bin/Debug",
-            "/Workspaces/Lean/Data" // Data location; Change if data is mounted
+            "/Workspaces/Local/Lean/Launcher/bin/Debug",
+            "/Workspaces/Local/Lean/Data" // Data location; Change if data is mounted
         ],
         "problemMatcher": "$msCompile"
       },
