@@ -3,8 +3,10 @@ absolute_path() {
   echo "$(cd "$(dirname "${1}")" && pwd)/$(basename "${1}")"
 }
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # Get build directory from args position 1, or use default
-DEFAULT_BUILD_DIR=../Launcher/bin/Debug/
+DEFAULT_BUILD_DIR="${SCRIPT_DIR}/../Lean/Launcher/bin/Debug/"
 BUILD_DIR=${1:-$DEFAULT_BUILD_DIR}
 BUILD_DIR=$(absolute_path "${BUILD_DIR}")
 
@@ -12,12 +14,12 @@ BUILD_DIR=$(absolute_path "${BUILD_DIR}")
 export PYTHONPATH="${PYTHONPATH}:${BUILD_DIR}"
 
 # Get data directory from args position 2, or use default
-DEFAULT_DATA_DIR=../Data
+DEFAULT_DATA_DIR="${SCRIPT_DIR}/../Lean/Data"
 DATA_DIR=${2:-$DEFAULT_DATA_DIR}
 DATA_DIR=$(absolute_path "${DATA_DIR}")
 
 #Get Notebook location from args position 3, or use default
-DEFAULT_NOTEBOOK_DIR=$BUILD_DIR/Notebooks
+DEFAULT_NOTEBOOK_DIR="${BUILD_DIR}/Notebooks"
 NOTEBOOK_DIR=${3:-$DEFAULT_NOTEBOOK_DIR}
 NOTEBOOK_DIR=$(absolute_path "${NOTEBOOK_DIR}")
 
@@ -47,9 +49,10 @@ fi
 mkdir -p /root/.ipython/profile_default/startup/ && \
 ln -s /Lean/Launcher/bin/Debug/start.py /root/.ipython/profile_default/startup/start.py
 
-# Copy over any notebooks from build directory to notebook directory
-RESEARCH_FILES=$BUILD_DIR/*.ipynb
-if [ -d "$BUILD_DIR" ]; then 
+# Copy over any notebooks from research directory to notebook directory
+RESEARCH_DIR=$(absolute_path "${SCRIPT_DIR}/../Lean/Research")
+RESEARCH_FILES="${RESEARCH_DIR}/*.ipynb"
+if [ -d "$RESEARCH_DIR" ]; then 
     echo "Copying research files from $RESEARCH_FILES to $NOTEBOOK_DIR; will not overwrite existing files"
     cp -n $RESEARCH_FILES $NOTEBOOK_DIR
 fi
