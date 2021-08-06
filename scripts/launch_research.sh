@@ -10,6 +10,10 @@ DEFAULT_BUILD_DIR="${SCRIPT_DIR}/../Lean/Launcher/bin/Debug/"
 BUILD_DIR=${1:-$DEFAULT_BUILD_DIR}
 BUILD_DIR=$(absolute_path "${BUILD_DIR}")
 
+# Use our startup script for jupyter, needed to set runtime properly
+mkdir -p /root/.ipython/profile_default/startup/
+ln -s ${BUILD_DIR}/start.py /root/.ipython/profile_default/startup/start.py
+
 #Add our build directory to python path for python kernel
 export PYTHONPATH="${PYTHONPATH}:${BUILD_DIR}"
 
@@ -39,15 +43,15 @@ if [ ! -f "$CONFIG" ]; then
     \"algorithm-language\": \"Python\",
     \"messaging-handler\": \"QuantConnect.Messaging.Messaging\", 
     \"job-queue-handler\": \"QuantConnect.Queues.JobQueue\", 
+    \"map-file-provider\": \"QuantConnect.Data.Auxiliary.LocalDiskMapFileProvider\",
+    \"factor-file-provider\": \"QuantConnect.Data.Auxiliary.LocalDiskFactorFileProvider\",
+    \"data-provider\": \"QuantConnect.Lean.Engine.DataFeeds.DefaultDataProvider\",
     \"api-handler\": \"QuantConnect.Api.Api\", 
     \"job-user-id\": \"0\",
     \"api-access-token\": \"\",
-    }" > $CONFIG
+    \"job-organization-id\": \"\",
+}" > $CONFIG
 fi
-
-# Use our startup script for jupyter, needed to set runtime properly
-mkdir -p /root/.ipython/profile_default/startup/ && \
-ln -s /Lean/Launcher/bin/Debug/start.py /root/.ipython/profile_default/startup/start.py
 
 # Copy over any notebooks from research directory to notebook directory
 RESEARCH_DIR=$(absolute_path "${SCRIPT_DIR}/../Lean/Research")
