@@ -4,3 +4,5 @@ Work/*
 
 # Ignore local data
 Data/*
+Data
+Notebooks/*

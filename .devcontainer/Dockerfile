@@ -17,9 +17,7 @@ RUN apt-get install -y dos2unix
 # ------ Research Specific Setup ------
 # Install clr-loader for running Py research in VS code
 RUN pip install clr-loader==0.1.6
-
 ENV LD_LIBRARY_PATH=/lib/
-RUN ln -s /lib/$(uname -m)-linux-gnu/libc.so.6 /lib/$(uname -m)-linux-gnu/libc.so
 
 # Install .NET Interactive to support C# in Jupyter notebooks
 ENV PATH="${PATH}:/root/.dotnet/tools"
