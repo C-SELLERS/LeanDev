@@ -21,7 +21,7 @@ ENV LD_LIBRARY_PATH=/lib/
 
 # Install .NET Interactive to support C# in Jupyter notebooks
 ENV PATH="${PATH}:/root/.dotnet/tools"
-RUN dotnet tool install -g --add-source "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json" Microsoft.dotnet-interactive && \
+RUN dotnet tool install -g --add-source "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json" Microsoft.dotnet-interactive --version 1.0.240403 && \
     dotnet interactive jupyter install 
 
 # --------- Docker in Docker ---------
