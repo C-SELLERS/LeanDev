@@ -23,6 +23,7 @@ This repo aims to simplify local development of Lean by introducing a docker con
 
 
 4. Open this directory in VSCode and do the following:
+   - Create two folders called `Data` and `Notebooks` ([See more details](https://github.com/C-SELLERS/LeanDev/blob/master/.devcontainer/devcontainer.json#L35-L46))
    - Ctrl + Shift + P to bring up VS Code command palette
    - Search for "Remote-Container: Rebuild and Reopen in Container"
    - Execute the command (Click or press enter)
